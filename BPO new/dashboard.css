@@ -1,0 +1,244 @@
+
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+*{
+	list-style: none;
+	text-decoration: none;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Open Sans', sans-serif;
+}
+
+body{
+	background: #f5f6fa;
+}
+
+.hamburger img{
+	width: 40px;
+}
+
+.logout{
+	float: right;
+	color: #fff;
+}
+
+.wrapper .sidebar{
+	background: rgb(5, 68, 104);
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 240px;
+	height: 100%;
+	padding: 20px 0;
+	transition: all 0.5s ease;
+}
+
+.wrapper .sidebar .profile{
+	margin-bottom: 30px;
+	text-align: center;
+}
+
+.wrapper .sidebar .profile img{
+	display: block;
+	width: 100px;
+	height: 100px;
+    border-radius: 50%;
+	margin: 0 auto;
+}
+
+.wrapper .sidebar .profile h3{
+	color: #ffffff;
+	margin: 10px 0 5px;
+}
+
+.wrapper .sidebar .profile p{
+	color: rgb(206, 240, 253);
+	font-size: 14px;
+}
+
+.wrapper .sidebar ul li a{
+	display: block;
+	padding: 13px 30px;
+	border-bottom: 1px solid #10558d;
+	color: rgb(241, 237, 237);
+	font-size: 16px;
+	position: relative;
+}
+
+.wrapper .sidebar ul li a .icon{
+	color: #dee4ec;
+	width: 30px;
+	display: inline-block;
+}
+
+ 
+
+.wrapper .sidebar ul li a:hover,
+.wrapper .sidebar ul li a.active{
+	color: #0c7db1;
+
+	background:white;
+    border-right: 2px solid rgb(5, 68, 104);
+}
+
+.wrapper .sidebar ul li a:hover .icon,
+.wrapper .sidebar ul li a.active .icon{
+	color: #0c7db1;
+}
+
+.wrapper .sidebar ul li a:hover:before,
+.wrapper .sidebar ul li a.active:before{
+	display: block;
+}
+
+.wrapper .section{
+	width: calc(100% - 225px);
+	margin-left: 225px;
+	transition: all 0.5s ease;
+}
+
+.wrapper .section .top_navbar{
+	background: #ff7200;
+	height: 70px;
+	display: flex;
+	align-items: center;
+	padding: 0 30px;
+	justify-content: space-between;
+ 
+}
+
+.wrapper .section .top_navbar .hamburger a{
+	font-size: 28px;
+	color: #f4fbff;
+}
+
+.wrapper .section .top_navbar .hamburger a:hover{
+	color: #a2ecff;
+}
+
+ 
+
+body.active .wrapper .sidebar{
+	left: -240px;
+}
+
+body.active .wrapper .section{
+	margin-left: 0;
+	width: 100%;
+}
+.task-btn{
+	position: fixed;
+    bottom: 20px;
+	right: 40px;
+	
+}
+.assign-btn{
+	color: #fff;
+	height: 45px;
+	width: 120px;
+	border-style: none;
+	border-width: 0px;
+	border-radius: 5px;
+	background-color: #ff7200;
+}
+.form-container {
+    max-width: 700px;
+    margin: 20px auto;
+    background-color: transparent;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-color: #fff;
+    border-style: solid;
+    border-width: 1px;
+    backdrop-filter: blur(10px);
+	transform: translate(-50%,-50%) scale(0);
+	visibility: hidden;
+}
+.open-popup{
+	visibility: visible;
+	transform: translate(-50%,-50%) scale(1);
+}
+
+.form label {
+    display: block;
+    margin-bottom: 8px;
+    color: #fff;
+}
+
+input{
+    text-align: center;
+}
+input,
+textarea {
+    color: #fff;
+    width: 300px;
+    padding: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: transparent;
+   
+}
+
+.address{
+    color: #fff;
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: transparent;
+}
+input[type="file"] {
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+input[type="submit"] {
+    background-color: #ff7200;
+    color: #000000;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 120px;
+    transition: .3s ease;
+}
+
+
+input[type="submit"]:hover {
+    background-color: #fff;
+}
+
+.side-by-side {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.input-container{
+    margin-left:20px; 
+}
+
+#clientName,
+#clientemail,
+#clientid,
+#clientmobile,
+#clientposition,
+#clientstate,
+#companyName,
+#companyEmail {
+    flex: 10px;
+}
+
+.client{
+    margin-top: 10px;
+}
+.detail-heading{
+    text-align: center;
+    color: #ff7200;
+}
