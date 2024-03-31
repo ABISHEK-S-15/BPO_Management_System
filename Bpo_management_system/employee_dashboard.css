@@ -1,0 +1,266 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+.main_box{
+  position: relative;
+  background: url('imgcurrency.jpg') right no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
+}
+.main_box .sidebar_menu{
+  position: fixed;
+  height: 100vh;
+  width: 250px;
+  left: -250px;
+  background-color: #2927a8;
+  box-shadow: 0px 0px 6px rgba(255, 255, 255, 0.5);
+  overflow: hidden;
+  transition: all 0.3s linear;
+  top: 0px;
+}
+
+
+
+.logo img{
+	display: block;
+	width: 150px;
+	height: 150px;
+  border-radius: 50%;
+	margin-top: 25px;
+}
+
+.client-details{
+  position: relative;
+  top: 30%;
+}
+
+.client-details h3{
+	color: #ffffff;
+	text-align: center;
+	font-weight: bolder;
+	font-size: 25px;
+}
+
+
+.sidebar_menu .logo a{
+  position: absolute;
+  left: 50px;
+}
+
+.sidebar_menu .social_media{
+  position: absolute;
+  left: 40%;
+  transform: translateX(-40%);
+  bottom: 20px;
+  list-style: none;
+  cursor: pointer;
+}
+.sidebar_menu .social_media i{
+  text-decoration: none;
+  padding: 0 5px;
+  color: #fff;
+  opacity: 0.6;
+  font-size: 20px;
+}
+.sidebar_menu .social_media i:hover{
+  opacity: 1;
+  transition: all 0.2s linear;
+  transform: scale(1.01);
+}
+#check{
+  display: none;
+}
+.main_box .btn_one i{
+  color: #000;
+  font-size: 30px;
+  font-weight: 700;
+  position: absolute;
+  top: 0px;
+  left: 16px;
+  line-height: 60px;
+  cursor: pointer;
+  opacity: 1;
+  transition: all 0.3s linear;  
+}
+ .sidebar_menu .btn_two i{
+  font-size: 25px;
+  line-height: 60px;
+  position: absolute;
+  left: 220px;
+  cursor: pointer;
+  opacity: 0;
+  transition: all 0.3s linear;
+}
+.btn_one i:hover{
+  font-size: 29px;
+}
+.btn_two i:hover{
+  font-size: 24px;
+}
+#check:checked ~ .sidebar_menu{
+  left: 0;
+}
+#check:checked ~ .btn_one i{
+  opacity: 0;
+}
+#check:checked ~ .sidebar_menu .btn_two i{
+  opacity: 1;
+}
+
+
+
+
+
+.top_navbar{
+  background: #fdfdfc;
+	height: 70px;
+	display: flex;
+	align-items: center;
+	padding: 0 30px;
+	display: flex;
+	box-shadow: 0 1px 10px rgb(159, 143, 143);
+}
+
+.bpo-logo-img{
+  width: 80px;
+}
+.bpo-logo{
+  margin-left: 20px;
+}
+.head-container{
+  position: absolute;
+  right: 40%;
+}
+
+.heading{
+	color: #ff7200;
+}
+.logout-container{
+  position: fixed;
+  right: 10px;
+}
+
+.logout{
+	
+	color: #000;
+	height: 40px;
+	width: 120px;
+	background-color: #ff7200;
+	border-width: 0px;
+	border-radius: 5px;
+	font-weight: bold;
+	font-size: 15px;
+}
+.logout:hover{
+	background-color: #fff;
+	color: #ff7200;
+	border-color: #ff7200;
+	box-shadow: 0 1px 10px rgb(144, 138, 138);
+	border-style: solid;
+	border-width: 1px;
+}
+
+
+
+
+
+.task-body{
+	
+  margin-top: 20px;
+}
+.task-body h1{
+  margin-bottom: 20px;
+  color: #ff7200;
+}
+th,td{
+  border: 1px solid #000;
+}
+
+table{
+  width: 100%;
+}
+
+
+.details{
+  color:#fff;
+  text-align:center;
+  padding-top:20px;
+}
+
+.column-value{
+  background-color: #fff;
+	border-radius: 10px;
+  height: 50px;
+	padding: 20px;
+	box-shadow: 0 1px 10px rgb(144, 138, 138);
+}
+
+.pay-btn-con{
+  text-align: center;
+}
+.pay-btn{
+  color: #fff;
+	height: 30px;
+	width: 70px;
+	border-style: none;
+	border-width: 0px;
+	border-radius: 5px;
+	background-color: #e6802c;
+	font-weight: bold;
+	font-size: 15px;
+	box-shadow: 0 1px 10px rgb(144, 138, 138);
+
+}
+.pay-btn:hover{
+  color: #ff7200;
+	background-color: #fff;
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 5px;
+	font-weight: bold;
+	font-size: 15px;
+	border-color: #ff7200;
+	box-shadow: 0 1px 10px rgb(144, 138, 138);
+}
+
+.download-btn{
+  color: #fff;
+	height: 30px;
+	width: 90px;
+	border-style: none;
+	border-width: 0px;
+	border-radius: 5px;
+	background-color: #d88039;
+	font-weight: bold;
+	font-size: 15px;
+	box-shadow: 0 1px 10px rgb(144, 138, 138);
+
+}
+.download-btn:hover{
+  color: #ff7200;
+	background-color: #fff;
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 5px;
+	font-weight: bold;
+	font-size: 15px;
+	border-color: #ff7200;
+	box-shadow: 0 1px 10px rgb(144, 138, 138);
+}
+
+.table-values{
+  text-align:center;
+  color:#3f4046;
+}
+
+.descrption-value{
+  max-width :40px;
+  overflow:hidden; 
+  text-align:center;
+  color:#3f4046;
+}

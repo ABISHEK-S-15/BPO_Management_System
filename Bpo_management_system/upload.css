@@ -1,0 +1,56 @@
+
+
+.main-container{
+    font-family: 'arial';
+    height: 300px;
+    width: 500px;
+    text-align: center;
+    transform: translate(80%,50%);
+    border: solid 1px #ff7200;
+    display: inline-block;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.head{
+    color: #ff7200;
+}
+
+input[type="file"] {
+    margin-bottom: 20px;
+    color: #c91e1e;
+}
+
+input[type="submit"]{
+    background-color: #ff7200;
+    color: #000000;
+    padding: 10px 15px;
+    margin-top: 20px;
+    border: none;
+	font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 120px;
+	text-align: center;
+
+}
+input[type="submit"]:hover,
+.cancle-btn:hover {
+    color: #ff7200;
+  background-color: #ffffff;
+box-shadow: 0 1px 10px rgb(144, 138, 138);
+border: solid 1px #ff7200;
+}
+.cancle-btn {
+    border:solid 1px #ff7200;
+    background-color: #fcfaf9;
+    color: #000000;
+    padding: 10px 15px;
+    margin-top: 20px;
+	font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 120px;
+	text-align: center;
+
+}

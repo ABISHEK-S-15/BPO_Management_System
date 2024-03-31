@@ -1,0 +1,91 @@
+
+body{
+    font-family: 'arial';
+}
+
+.table-container{
+    position: relative;
+    transform: translate(25%,5%);
+    text-align: center;
+}
+table{
+    width: 50%;
+    text-align: center;
+}
+.head-con{
+    text-align: center;
+}
+.heading{
+    color: #ff7200;
+}
+.column-value{
+    background-color: #fff;
+      border-radius: 10px;
+    height: 50px;
+      padding: 20px;
+      box-shadow: 0 1px 10px rgb(144, 138, 138);
+  }
+
+  .column-head{
+    background-color: #fff;
+      border-radius: 10px;
+    height: 70px;
+      box-shadow: 0 1px 10px rgb(144, 138, 138);
+  }
+  
+
+  .download-btn{
+    color: #fff;
+      height: 30px;
+      width: 90px;
+      border-style: none;
+      border-width: 0px;
+      border-radius: 5px;
+      background-color: #ff7200;
+      font-weight: bold;
+      font-size: 15px;
+      box-shadow: 0 1px 10px rgb(144, 138, 138);
+  
+  }
+  .download-btn:hover{
+    color: #ff7200;
+      background-color: #fff;
+      border-style: solid;
+      border-width: 1px;
+      border-radius: 5px;
+      font-weight: bold;
+      font-size: 15px;
+      border-color: #ff7200;
+      box-shadow: 0 1px 10px rgb(144, 138, 138);
+  }
+
+  .back-btn-con{
+    position: fixed;
+    top: 10px;
+    left: 10px;
+  }
+  .back-btn{
+    color: #fff;
+      height: 40px;
+      width: 100px;
+      border-style: none;
+      border-width: 0px;
+      border-radius: 5px;
+      background-color: #f58224;
+      font-weight: bold;
+      font-size: 15px;
+      box-shadow: 0 1px 10px rgb(144, 138, 138);
+
+  }
+  .back-btn:hover{
+    color: #ff7200;
+    background-color: #fff;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 15px;
+    border-color: #ff7200;
+    box-shadow: 0 1px 10px rgb(144, 138, 138);
+
+  }
