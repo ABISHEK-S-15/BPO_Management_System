@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   
+    <link rel="shortcut icon" href="images/logo2.png" type="x-icon" >
     <title>CONTACTS</title>
     <link rel="stylesheet" href="contacts.css">
 </head>

@@ -12,7 +12,8 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="shortcut icon" href="images/logo2.png" type="x-icon" >
+    <title>DOWNLOAD</title>
     <link rel="stylesheet" href="download.css">   
 </head>
 <body>
@@ -44,8 +45,6 @@ $conn->close();
                             echo "</tr>";
                             $count++;
                         }
-                    }else{
-                        echo "NO Records Found";
                     }
                     ?>
                 </tbody>

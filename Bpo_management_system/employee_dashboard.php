@@ -4,7 +4,8 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Website </title>
+    <link rel="shortcut icon" href="images/logo2.png" type="x-icon" >
+    <title> EMPLOYEE DASHBOARD </title>
     <link rel="stylesheet" href="client_dashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/> 
   </head>
@@ -85,6 +86,7 @@
                     <th>Start Date</th>
                     <th>End Date</th>
                     <th>Status</th>
+                    <th>Download</th>
                     <th>Action</th>
                     <th>Upload</th>
                 </tr>
@@ -113,8 +115,24 @@
                         <td class="table-values"><?php echo $row['startdate']; ?></td>
                         <td class="table-values"><?php echo $row['enddate']; ?></td>
                         <td class="table-values"><?php echo $row['status']; ?></td>
+                        <?php
+                        include('connection.php');
+                        if(isset($_POST['update']))
+                        {
+                           $query = "update dashboard set status = '$_POST[status]' where id=$_GET[id]";
+                           $query_run = mysqli_query($conn,$query);
+                           if($query_run)
+                           {
+                            echo "<script tpe='text/javascript'>
+                            window.location.href = 'employee_dashboard.php';
+                            </script>
+                            ";
+                           }
+                          }
+                        ?>
+                        <td><a href="uploads/'.$row['folderpath'].'" download><button class="download-btn">Download</button></a></td>
                         <td class="pay-btn-con"><a href="update_status.php?id=<?php echo $row['id'];
-                        ?>"><button class="pay-btn">Update</button></a>|<a href="amount.php?id=<?php echo $row['id'];
+                        ?>"><button class="pay-btn">Update</button></a><span>  </span><a href="amount.php?id=<?php echo $row['id'];
                         ?>"><button class="pay-btn">Amount</button></a></td>
                         <td class="pay-btn-con"><a href="upload.php"><button class="pay-btn">Upload<button></a></td>
                         

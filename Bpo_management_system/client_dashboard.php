@@ -10,10 +10,16 @@ if (!isset($_SESSION['USER_ID'])) {
 
 <?php 
 
-$user = $_SESSION['UNSER_NAME'];
+$user = $_SESSION['USER_EMAIL'];
 $query = mysqli_query($conn,"select * from users where email = '$user'");
 $row =mysqli_fetch_array($query);
 $id = $row['id'];
+$user_name = $row['username'];
+$mobile = $row['mobile'];
+$company = $row['company'];
+$position = $row['position'];
+$address = $row['address'];
+$email = $row['email'];
 
 
 
@@ -29,8 +35,8 @@ $id = $row['id'];
     if (move_uploaded_file($_FILES["pdfFile"]["tmp_name"], $targetFile)) {
       $filename=$_FILES['pdfFile']['name'];
       $folder_path = $targetDir;}
-    mysqli_query($conn,"insert into dashboard(title,description,startdate,enddate,status,filename,folderpath,amount,user_id)
-    value ('$title','$description','$startdate','$enddate','Not started','$filename','$folder_path','not','$id')");
+    mysqli_query($conn,"insert into dashboard(title,description,startdate,enddate,status,filename,folderpath,user_id)
+    value ('$title','$description','$startdate','$enddate','Not started','$filename','$folder_path','$id')");
 
     header("location:client_dashboard.php");
   }
@@ -49,7 +55,8 @@ $id = $row['id'];
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Website </title>
+    <link rel="shortcut icon" href="images/logo2.png" type="x-icon" >
+    <title> CLIENT DASHBOARD </title>
     <link rel="stylesheet" href="client_dashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
     <style>
@@ -113,10 +120,13 @@ $id = $row['id'];
         <div class="client-details">
           <h3>Client Profile</h3>
           <div class="details">
-            <b>Name :</b><br><br>
-            <b>Email :</b> <?php echo $_SESSION['UNSER_NAME'] ?><br><br>
-            <b>Mobile :</b> 123457890<br><br>
-            <b>Job :</b> Employee
+            <b>Name :</b><?php echo $user_name ?><br><br>
+            <b>Email :</b> <?php echo $email ?><br><br>
+            <b>Mobile :</b> <?php echo $mobile ?><br><br>
+            <b>Company :</b> <?php echo $company ?><br><br>
+            <b>Position :</b> <?php echo $position ?><br><br>
+            <b>Address :</b> <?php echo $address ?><br><br>
+            
           </div>
         </div>
         
@@ -146,7 +156,6 @@ $id = $row['id'];
                     <th>Start Date</th>
                     <th>End Date</th>
                     <th>Status</th>
-                    <th>Download</th>
                     <th>Payment</th>
                 </tr>
               </thead>
@@ -161,7 +170,7 @@ $id = $row['id'];
 
 
 
-                    $user = $_SESSION['UNSER_NAME'];
+                    $user = $_SESSION['USER_EMAIL'];
                     $query = mysqli_query($conn,"select * from users where email = '$user'");
                     $rowr =mysqli_fetch_array($query);
                     $id = $rowr['id'];
@@ -185,7 +194,7 @@ $id = $row['id'];
                         <td class="table-values"><?php echo $row['startdate']; ?></td>
                         <td class="table-values"><?php echo $row['enddate']; ?></td>
                         <td class="table-values"><?php echo $row['status']; ?></td>
-                        <td class="pay-btn-con"><a href="download.php"><button class="download-btn">Download</button></a></td>
+                        
                         <td class="pay-btn-con"><a href="payment.php"><button class="pay-btn">Pay</button></a></td>
                       </tr>
                       <?php } ?> 
@@ -221,7 +230,7 @@ $id = $row['id'];
         </div>
         <div>
             <label>Start Date:</label>
-            <input type="date" name="startdate" required autocomplete="off">
+            <input type="date" name="startdate" required autocomplete="off" >
         </div>
         <div>
             <label>End Date:</label>

@@ -33,7 +33,8 @@ include('connection.php');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="shortcut icon" href="images/logo2.png" type="x-icon" >
+    <title>UPLOAD</title>
     <link rel="stylesheet" href="upload.css">
 </head>
 <body>
@@ -43,11 +44,11 @@ include('connection.php');
         </div>
         <form method="post" enctype="multipart/form-data">
         <label class="file-text">File Upload:</label>
-        <input type="file" id="pdfFile" name="pdfFile">
+        <input type="file" id="pdfFile" name="pdfFile" required>
         <br>
         <input type="submit"  name="Submit" value="Submit"><br>
-        <a href=""><button class="cancle-btn">Cancel</button></a>
         </form>
+        <a href="employee_dashboard.php"><button class="cancle-btn">Cancel</button></a>
     </div>
 </body>
 </html>

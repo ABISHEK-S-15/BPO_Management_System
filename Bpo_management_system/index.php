@@ -13,11 +13,15 @@ if (isset($_POST['userlogin'])) {
   if ($num>0) {
     $row=mysqli_fetch_assoc($sql);
     $_SESSION['USER_ID']=$row['id'];
-    $_SESSION['UNSER_NAME']=$row['email'];
+    $_SESSION['USER_EMAIL']=$row['email'];
     header("location:client_dashboard.php");
   }
   else{
     $msg="Please Enter Valid Details !";
+    echo"<script>
+    alert('$msg');
+    </script>";
+
   }
 }
 
@@ -28,6 +32,7 @@ if (isset($_POST['userlogin'])) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="shortcut icon" href="images/logo2.png" type="x-icon" >
     <title>Global infotech</title>
     <link rel="stylesheet" href="index.css">
 </head>

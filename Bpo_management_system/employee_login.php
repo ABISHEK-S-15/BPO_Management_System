@@ -7,14 +7,14 @@
        $query_run = mysqli_query($conn,$query);
        if(mysqli_num_rows($query_run))
        {
-        echo "<script tpe='text/javascript'>
+        echo "<script type='text/javascript'>
         window.location.href = 'employee_dashboard.php';
         </script>
         ";
        }
        else
        {
-        echo "<script tpe='text/javascript'>
+        echo "<script type='text/javascript'>
         alert('Please enter correct details');
         window.location.href = 'employee_login.php';
         </script>
@@ -30,6 +30,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="images/logo2.png" type="x-icon" >
     <title>Employee_login</title>
     <link rel="stylesheet" href="employee_login.css">
 </head>

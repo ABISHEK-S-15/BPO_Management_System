@@ -2,24 +2,41 @@
     include('connection.php');
     if(isset($_POST['usersignup']))
     {
-        $query = "insert into users value(null,'$_POST[username]','$_POST[email]',$_POST[mobile],'$_POST[password]','$_POST[company]','$_POST[position]','$_POST[address]')";
+        
+       $email=$_POST["email"];
+        $error= array();
+        $email = mysqli_real_escape_string($conn,$_POST['email']);
+        $sql = mysqli_query($conn,"select * from users where email='$email'");
+        $num=mysqli_num_rows($sql);
+        if ($num>0) {
+            echo "<script type='text/javascript'>
+            alert('Email Already exist...');
+            window.location.href = 'signup.php';
+            </script>
+            ";
+        }
+        else{
+            $query = "insert into users value(null,'$_POST[username]','$_POST[email]',$_POST[mobile],'$_POST[password]','$_POST[company]','$_POST[position]','$_POST[address]')";
+        
         $querry_run = mysqli_query($conn,$query);
         if($querry_run)
       {
-        echo "<script tpe='text/javascript'>
+        echo "<script type='text/javascript'>
         alert('User registrered sucessfully...');
         window.location.href = 'index.php';
         </script>
         ";
       }
       else{
-        echo "<script tpe='text/javascript'>
+        echo "<script type='text/javascript'>
         alert('Error... Plz Try Again.');
         window.location.href = 'signup.php';
         </script>
         ";
       }
+      }
     }
+
 ?>
 
 
@@ -27,6 +44,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="shortcut icon" href="images/logo2.png" type="x-icon" >
     <title>SIGNUP</title>
     <link rel="stylesheet" href="signup.css">
 </head>
@@ -40,7 +58,7 @@
                 <label  class="label">User Name : </label>
                 <input type="text" name="username" placeholder="Enter username" required autocomplete="off">
                 <label  class="label">Mobile : </label>
-                <input type="text" style="margin-left: 45px;" name="mobile" placeholder="Enter Mobile Number" required autocomplete="off">
+                <input type="number" style="margin-left: 45px;" name="mobile" placeholder="Enter Mobile Number" required autocomplete="off">
                 <label  class="label">Company : </label>
                 <input type="text" style="margin-left: 25px;" name="company" placeholder="Company Name" required autocomplete="off">
                 
