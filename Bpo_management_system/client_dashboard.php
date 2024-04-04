@@ -23,7 +23,7 @@ $email = $row['email'];
 
 
 
- if (isset($_POST['Submit'])) 
+ if (isset($_POST['Submit']))
  {
  	 $title =   $_POST['title'];
  	 $description = $_POST['description'];
@@ -36,7 +36,7 @@ $email = $row['email'];
       $filename=$_FILES['pdfFile']['name'];
       $folder_path = $targetDir;}
     mysqli_query($conn,"insert into dashboard(title,description,startdate,enddate,status,filename,folderpath,user_id)
-    value ('$title','$description','$startdate','$enddate','Not started','$filename','$folder_path','$id')");
+    value ('$title','$description',Now(),'$enddate','Not started','$filename','$folder_path','$id')");
 
     header("location:client_dashboard.php");
   }
@@ -120,12 +120,12 @@ $email = $row['email'];
         <div class="client-details">
           <h3>Client Profile</h3>
           <div class="details">
-            <b>Name :</b><?php echo $user_name ?><br><br>
-            <b>Email :</b> <?php echo $email ?><br><br>
+            <b>Name :</b><?php echo ucfirst($user_name) ?><br><br>
+            <b>Email :</b> <?php echo ucfirst($email) ?><br><br>
             <b>Mobile :</b> <?php echo $mobile ?><br><br>
-            <b>Company :</b> <?php echo $company ?><br><br>
-            <b>Position :</b> <?php echo $position ?><br><br>
-            <b>Address :</b> <?php echo $address ?><br><br>
+            <b>Company :</b> <?php echo ucfirst($company) ?><br><br>
+            <b>Position :</b> <?php echo ucfirst($position) ?><br><br>
+            <b>Address :</b> <?php echo ucfirst($address) ?><br><br>
             
           </div>
         </div>
@@ -195,7 +195,8 @@ $email = $row['email'];
                         <td class="table-values"><?php echo $row['enddate']; ?></td>
                         <td class="table-values"><?php echo $row['status']; ?></td>
                         
-                        <td class="pay-btn-con"><a href="payment.php"><button class="pay-btn">Pay</button></a></td>
+                        <td class="pay-btn-con"><a href="payment.php?id=<?php echo $row['id'];?>"><button class="pay-btn">Pay</button></a></td>
+                        <td ><a href="delete.php?source=client&id=<?php echo $row['id'];?>">Delete</a></td>
                       </tr>
                       <?php } ?> 
                       
@@ -230,7 +231,7 @@ $email = $row['email'];
         </div>
         <div>
             <label>Start Date:</label>
-            <input type="date" name="startdate" required autocomplete="off" >
+            <input type="date" name="startdate" disabled >
         </div>
         <div>
             <label>End Date:</label>

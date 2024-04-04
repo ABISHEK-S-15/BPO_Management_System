@@ -130,11 +130,12 @@
                            }
                           }
                         ?>
-                        <td><a href="uploads/'.$row['folderpath'].'" download><button class="download-btn">Download</button></a></td>
-                        <td class="pay-btn-con"><a href="update_status.php?id=<?php echo $row['id'];
-                        ?>"><button class="pay-btn">Update</button></a><span>  </span><a href="amount.php?id=<?php echo $row['id'];
-                        ?>"><button class="pay-btn">Amount</button></a></td>
+                        <td class="pay-btn-con"><a href="employee_download.php"><button class="download-btn">Download<button></a></td>
+                        <td class="pay-btn-con"><a href="update_status.php?id=<?php echo $row['id'];?>">
+                        <button class="pay-btn">Update</button></a><span>  </span><a href="amount.php?id=<?php echo $row['id'];?>">
+                        <button class="pay-btn">Amount</button></a></td>
                         <td class="pay-btn-con"><a href="upload.php"><button class="pay-btn">Upload<button></a></td>
+                        <td ><a href="delete.php?source=employee&id=<?php echo $row['id'];?>">Delete</a></td>
                         
                       </tr>
 
