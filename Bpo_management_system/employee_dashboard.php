@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="images/logo2.png" type="x-icon" >
     <title> EMPLOYEE DASHBOARD </title>
-    <link rel="stylesheet" href="client_dashboard.css">
+    <link rel="stylesheet" href="employee_dashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/> 
   </head>
 <body>
@@ -49,16 +49,41 @@
             
           </label>
         </div>
+        <?php
+                              session_start();
+                          include('connection.php');
 
-        <div class="client-details">
-          <h3>Employee Profile</h3>
-          <div class="details">
-            <b>Name :</b> Admin<br><br>
-            <b>Email :</b> bpoadmin@123<br><br>
-            <b>Mobile :</b> 123457890<br><br>
-            <b>Job :</b> Employee
-          </div>
-        </div>
+                          if (!isset($_SESSION['EMPLOYEE_ID'])) {
+                            header("location:employee_login.php");
+                            die();
+                          }
+                          ?>
+
+                          <?php 
+
+                          $user = $_SESSION['EMPLOYEE_EMAIL'];
+                          $query = mysqli_query($conn,"select * from admin where email = '$user'");
+                          $row =mysqli_fetch_array($query);
+                          $id = $row['id'];
+                          $name = $row['name'];
+                          $mobile = $row['mobile'];
+                        //  $company = $row['company'];
+                          $position = $row['position'];
+                        //  $address = $row['address'];
+                          $email = $row['email'];
+
+
+                    ?>
+
+                      <div class="client-details">
+                          <h3>Employee Profile</h3>
+                          <div class="details">
+                              <b>Name :</b> <?php echo ucfirst($name) ?><br><br>
+                              <b>Email :</b> <?php echo ucfirst($email) ?><br><br>
+                              <b>Mobile :</b> <?php echo ($mobile) ?><br><br>
+                              <b>Position :</b> <?php echo ucfirst($position) ?>
+                          </div>
+                      </div>
         
       
       <div class="social_media">
@@ -70,7 +95,8 @@
         </ul>
       </div>
     </div>
-
+                    
+                     
 
 
 
@@ -100,8 +126,8 @@
 
                   $sql = "select * from dashboard";
                   $run = mysqli_query($connection, $sql);
-
-                  $id=1;
+                  $count=1;
+                  
 
                   while($row = mysqli_fetch_array($run))
                   {
@@ -109,37 +135,28 @@
                   ?>
 
                       <tr class="column-value">
-                        <td class="table-values"><?php echo $row['id']; ?></td>
+                        <td class="table-values"><?php echo $count ?></td>
                         <td class="table-values"><?php echo $row['title']; ?></td>
                         <td class="descrption-value"><?php echo $row['description']; ?></td>
                         <td class="table-values"><?php echo $row['startdate']; ?></td>
                         <td class="table-values"><?php echo $row['enddate']; ?></td>
                         <td class="table-values"><?php echo $row['status']; ?></td>
-                        <?php
-                        include('connection.php');
-                        if(isset($_POST['update']))
-                        {
-                           $query = "update dashboard set status = '$_POST[status]' where id=$_GET[id]";
-                           $query_run = mysqli_query($conn,$query);
-                           if($query_run)
-                           {
-                            echo "<script tpe='text/javascript'>
-                            window.location.href = 'employee_dashboard.php';
-                            </script>
-                            ";
-                           }
-                          }
-                        ?>
-                        <td class="pay-btn-con"><a href="employee_download.php"><button class="download-btn">Download<button></a></td>
-                        <td class="pay-btn-con"><a href="update_status.php?id=<?php echo $row['id'];?>">
-                        <button class="pay-btn">Update</button></a><span>  </span><a href="amount.php?id=<?php echo $row['id'];?>">
-                        <button class="pay-btn">Amount</button></a></td>
-                        <td class="pay-btn-con"><a href="upload.php"><button class="pay-btn">Upload<button></a></td>
-                        <td ><a href="delete.php?source=employee&id=<?php echo $row['id'];?>">Delete</a></td>
+  
+                        <td class="pay-btn-con"><a href="download.php?source=employee&id=<?php echo $row['id'];?>"><button class="download-btn">Download<button></a></td>
+                        <td class="pay-btn-con">
+                          <a href="update_status.php?id=<?php echo $row['id'];?>">
+                          <button class="pay-btn">Update</button></a><span>  
+
+                          </span><a href="amount.php?id=<?php echo $row['id'];?>">
+                          <button class="pay-btn">Amount</button></a>
+                      </td>
+                        <td class="pay-btn-con"><a href="upload.php?source=employee&id=<?php echo $row['id'];?>"><button class="pay-btn">Upload<button></a></td>
+                        <td class="pay-btn-con"><a href="delete.php?source=employee&id=<?php echo $row['id'];?>"><img src="images/delete-img.png" class="delete-img"></a></td>
                         
                       </tr>
 
-                      <?php $id++; } ?>
+                      <?php 
+                            $count++; } ?>
                 </tbody>
             </table>
         </div>

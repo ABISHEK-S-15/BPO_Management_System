@@ -1,74 +1,5 @@
 <?php
 
-// session_start();
-// include('connection.php');
-
-// if (!isset($_SESSION['USER_ID'])) {
-// 	header("location:index.php");
-// 	exit();
-// }
-
-// $user = $_SESSION['USER_EMAIL'];
-// $query = mysqli_query($conn,"select * from users where email = '$user'");
-// $row =mysqli_fetch_array($query);
-// $user_id = $row['id'];
-
-// $query1 = mysqli_query($conn,"select * from dashboard where user_id = '$user_id'");
-// $row1 =mysqli_fetch_array($query1);
-// $task_id = $row1['id'];
-
-
-
-
-
-//  if (isset($_POST['Submit'])) 
-//  {
-//  	$full_name =   $_POST['full_name'];
-//  	$email = $_POST['email'];
-//     $address = $_POST['address'];
-//     $city = $_POST['city'];
-//     $state = $_POST['state'];
-//     $zipcode = $_POST['zipcode'];
-//     $name_on_card = $_POST['name_on_card'];
-//     $card_number = $_POST['card_number'];
-//     $exp_month = $_POST['exp_month'];
-//     $exp_year = $_POST['exp_year'];
-//     $cvv = $_POST['cvv'];
-//     $amount =  $_POST['amount'];
-    
-//     $check_query =  "select * from payment WHERE user_id='$user_id' && task_id='$task_id' && req_amt = '$amount' ";
-//     $check =  mysqli_query($conn,$check_query);
-//     $task_row =mysqli_fetch_array($check);
-
-//     if ($check){
-
-//         mysqli_query($conn, "UPDATE payment 
-//         SET name='$full_name', 
-//             email='$email', 
-//             address='$address', 
-//             city='$city', 
-//             state='$state', 
-//             zipcode='$zipcode', 
-//             name_on_card='$name_on_card',
-//             card_no='$card_number',
-//             exp_month='$exp_month',
-//             exp_year='$exp_year',
-//             cvv='$cvv',
-//             amt_pay='$amount' 
-//          WHERE user_id='$user_id' && task_id='$task_id' && req_amt = '$amount'");
-//         header("location:employee_download.php");
-//     }
-//     else{
-//         $msg="Invalid Requested Amount (or) Invalid Details !!";
-//         echo "<script type='text/javascript'>
-//         alert('$msg');
-//         window.location.href = 'payment.php';
-//         </script>
-//         ";
-//       }
-//   }
- 
-
 session_start();
 include('connection.php');
 
@@ -82,9 +13,8 @@ $user_id = $_SESSION['USER_ID'];
 $query = mysqli_query($conn, "SELECT * FROM users WHERE id = '$user_id'");
 $row = mysqli_fetch_array($query);
 
-$task_query = mysqli_query($conn, "SELECT * FROM dashboard WHERE user_id = '$user_id'");
-$row1 = mysqli_fetch_array($task_query);
-$task_id = $row1['id'];
+
+$task_id = $_GET['id'];
 
 if (isset($_POST['Submit'])) {
     $full_name = $_POST['full_name'];
@@ -115,15 +45,16 @@ if (isset($_POST['Submit'])) {
         mysqli_stmt_execute($stmt);
 
         // Redirect after successful update
-        header("location: employee_download.php");
+        header("Location: download.php?source=client&id=" . $_GET['id']);
+
         exit(); // Terminate script execution after redirection
     } else {
-        $msg = "No existing payment record found for this user and task.";
+        $msg = "Invalid Amount or Details,please Retry!!.";
         echo "<script type='text/javascript'>
         alert('$msg');
-        window.location.href = 'payment.php';
+        window.location.href = unset('payment.php');
         </script>";
-        exit(); // Terminate script execution after displaying alert and redirection
+
     }
 }
 
@@ -214,51 +145,54 @@ if (isset($_POST['Submit'])) {
             <div class="flex">
                 <div class="inputbox">
                 <?php
-                
-                include('connection.php');
+                    include('connection.php');
 
-                // Assuming session has already been started
-                $user_email = $_SESSION['USER_EMAIL'];
-                
-                // Retrieve user's ID from the database
-                $query = "SELECT * FROM users WHERE email = ?";
-                $stmt = mysqli_prepare($conn, $query);
-                mysqli_stmt_bind_param($stmt, "s", $user_email);
-                mysqli_stmt_execute($stmt);
-                $result = mysqli_stmt_get_result($stmt);
-                
-                if ($row = mysqli_fetch_assoc($result)) {
-                    $user_id = $row['id'];
-                
-                    // Fetch payment information using prepared statement
-                    $query = "SELECT * FROM payment WHERE task_id = ? AND user_id = ?";
+                    // Assuming session has already been started
+                    $user_email = $_SESSION['USER_EMAIL'];
+
+                    // Retrieve user's ID from the database
+                    $query = "SELECT * FROM users WHERE email = ?";
                     $stmt = mysqli_prepare($conn, $query);
-                    $task_id = $_GET['id']; // Assuming 'id' is passed via GET parameter
-                    mysqli_stmt_bind_param($stmt, "ii", $task_id, $user_id);
+                    mysqli_stmt_bind_param($stmt, "s", $user_email);
                     mysqli_stmt_execute($stmt);
-                    $payment_result = mysqli_stmt_get_result($stmt);
-                
-                    // Display payment information
-                    while ($row = mysqli_fetch_assoc($payment_result)) {
-                        $req_amt = $row['req_amt'];
+                    $result = mysqli_stmt_get_result($stmt);
+
+                    // Check if the query returned any results
+                    if ($row = mysqli_fetch_assoc($result)) {
+                        $user_id = $row['id'];
+
+                        // Fetch payment information using prepared statement
+                        $query = "SELECT * FROM payment WHERE task_id = ? AND user_id = ?";
+                        $stmt = mysqli_prepare($conn, $query);
+                        $task_id = $_GET['id']; // Assuming 'id' is passed via GET parameter
+                        mysqli_stmt_bind_param($stmt, "ii", $task_id, $user_id);
+                        mysqli_stmt_execute($stmt);
+                        $payment_result = mysqli_stmt_get_result($stmt);
+
+                        // Display payment information
+                        while ($row = mysqli_fetch_assoc($payment_result)) {
+                            $req_amt = $row['req_amt'];
+                    ?>
+                            <span>Requested Amount:</span>
+                            <input type="number" placeholder="<?php echo $req_amt; ?>" disabled required>
+                    <?php
+                        }
+                    } else {
+                        echo "User not found";
+                    }
                 ?>
-                
 
-
-                    <span>Requested Amount:</span>
-                    <input type="number" placeholder="<?php echo $req_amt; ?>" disabled required>
-                   <?php }}?>
                 </div>
                 <div class="inputbox">
                     <span>Amount:</span>
-                    <input type="number" placeholder="Enter Amount"name="amount" required>
+                    <input type="number" placeholder="Enter Amount" name="amount" required>
                 </div>
             </div>
 
         </div>
 
     </div>
-    <input type="submit" name="Submit" class="submit-btn">
+    <input type="submit" name="Submit" class="submit-btn" >
     </form>
 </div>
 </body>

@@ -182,13 +182,14 @@ $email = $row['email'];
                 ?>
 
                   <?php 
+                  $count=1;
                       for($i=1; $i<=$result;$i++)
                   {
                       $row =  mysqli_fetch_array($query1)
                     ?>
 
                     <tr class="column-value">
-                        <td class="table-values"><?php echo $row['id']; ?></td>
+                        <td class="table-values"><?php echo $count ?></td>
                         <td class="table-values"><?php echo $row['title']; ?></td>
                         <td class="descrption-value"><?php echo $row['description']; ?></td>
                         <td class="table-values"><?php echo $row['startdate']; ?></td>
@@ -196,9 +197,9 @@ $email = $row['email'];
                         <td class="table-values"><?php echo $row['status']; ?></td>
                         
                         <td class="pay-btn-con"><a href="payment.php?id=<?php echo $row['id'];?>"><button class="pay-btn">Pay</button></a></td>
-                        <td ><a href="delete.php?source=client&id=<?php echo $row['id'];?>">Delete</a></td>
+                        <td class="pay-btn-con"><a href="delete.php?source=client&id=<?php echo $row['id'];?>"><img src="images/delete-img.png" class="delete-img"></a></td>
                       </tr>
-                      <?php } ?> 
+                      <?php $count++;} ?> 
                       
                 </tbody>
             </table>
@@ -239,7 +240,7 @@ $email = $row['email'];
         </div>         
     </div>
     <label for="fileUpload">File Upload:</label>
-    <input type="file" id="pdfFile" name="pdfFile">
+    <input type="file" id="pdfFile" name="pdfFile" required>
     <br>
     <input type="submit"  name="Submit" value="Submit">
     <button class="back-btn" onclick="closepopup()" >Cancel</button>

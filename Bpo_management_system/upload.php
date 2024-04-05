@@ -1,32 +1,33 @@
 <?php
+session_start();
 include('connection.php');
 
-?>
+if (isset($_POST['Submit'])) {
+    $user_id = $_SESSION['USER_ID'];
+    $task_id = $_GET['id'];
 
-<?php 
-
-
-
- if (isset($_POST['Submit'])) 
- {
     $targetDir = "uploads/";
-    $targetFile = $targetDir . basename ($_FILES["pdfFile"]["name"]);
+    $targetFile = $targetDir . basename($_FILES["pdfFile"]["name"]);
     $fileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+
     if (move_uploaded_file($_FILES["pdfFile"]["tmp_name"], $targetFile)) {
-      $filename=$_FILES['pdfFile']['name'];
-      $folder_path = $targetDir;}
-    mysqli_query($conn,"insert into dashboard(filename,folderpath)
-    value ('$filename','$folder_path')");
+        $final_filename = $_FILES['pdfFile']['name'];
+        $folder_path = $targetDir;
 
-    header("location:employee_dashboard.php");
-  }
+        // Prevent SQL Injection using prepared statements
+        $stmt = $conn->prepare("UPDATE dashboard SET final_filename=?, final_folderpath=? WHERE id=? AND user_id=?");
+        $stmt->bind_param("ssii", $final_filename, $folder_path, $task_id, $user_id);
+        $stmt->execute();
+        $stmt->close();
 
-    
-    
-    
-
-
+        header("Location: employee_dashboard.php");
+        exit(); // Always exit after header redirect
+    } else {
+        echo "Failed to upload file.";
+    }
+}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -46,7 +47,7 @@ include('connection.php');
         <label class="file-text">File Upload:</label>
         <input type="file" id="pdfFile" name="pdfFile" required>
         <br>
-        <input type="submit"  name="Submit" value="Submit"><br>
+        <input type="submit"  name="Submit" value="Upload"><br>
         </form>
         <a href="employee_dashboard.php"><button class="cancle-btn">Cancel</button></a>
     </div>

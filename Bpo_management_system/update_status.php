@@ -1,8 +1,13 @@
 <?php
+session_start();
     include('connection.php');
+
+    $user_id = $_SESSION['USER_ID'];
+    $task_id = $_GET['id'];
+
     if(isset($_POST['update']))
     {
-       $query = "update dashboard set status = '$_POST[status]' where id=$_GET[id]";
+       $query = "update dashboard set status = '$_POST[status]' where id=$task_id && user_id=$user_id";
        $query_run = mysqli_query($conn,$query);
        if($query_run)
        {
@@ -33,12 +38,8 @@
 </head>
 <body>
     <div>
-        <?php
-            $query = "select * from dashboard where id = $_GET[id]";
-            $query_run = mysqli_query($conn,$query);
-            while($row = mysqli_fetch_assoc($query_run))
-            {
-                ?>
+        
+           
         <form method="post">
             <div>
                 <input type="hidden" name="id" class="" value="" required>
@@ -53,9 +54,8 @@
             </div>
             <input type="submit" class="" name="update" value="update">
         </form>
-        <?php
-            }
-            ?>
+        
+            
     </div>
 </body>
 </html>

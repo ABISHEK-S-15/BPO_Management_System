@@ -1,15 +1,20 @@
 <?php
+
+session_start();
+
 include('connection.php');
 
+$user_id = $_SESSION['USER_ID'];
+$task_id = $_GET['id'];
 
 if(isset($_GET['source'])) {
     $source = $_GET['source'];
     
     // Check the source of the request and delete task accordingly
     if($source === 'client') {
-        delete_task('client_dashboard.php'); // Pass the destination URL for client dashboard
+        delete_task('client_dashboard.php',$task_id,$user_id); // Pass the destination URL for client dashboard
     } elseif($source === 'employee') {
-        delete_task('employee_dashboard.php'); // Pass the destination URL for employee dashboard
+        delete_task('employee_dashboard.php',$task_id,$user_id); // Pass the destination URL for employee dashboard
     } else {
         // Invalid source provided, handle the error
         echo "Error: Invalid source provided.";
@@ -23,14 +28,16 @@ if(isset($_GET['source'])) {
 
 
 
+function delete_task($redirect_page,$task_id,$user_id){
 
-function delete_task($redirect_page){
     global $conn;
 
-    $delete = "delete from dashboard where id=$_GET[id]";
+    $delete = "delete from dashboard where id='$task_id' && user_id = '$user_id' ";
+    $delete_payment = "delete from payment where task_id='$task_id' && user_id = '$user_id' ";
     $query = mysqli_query($conn,$delete);
+    $delete_query = mysqli_query($conn,$delete_payment);
 
-    if ($query) {
+    if ($query && $delete_query) {
         
         header("location:$redirect_page");
         exit;

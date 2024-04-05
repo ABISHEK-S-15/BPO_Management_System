@@ -1,27 +1,31 @@
-<?php
-    include('connection.php');
-    if(isset($_POST['adminlogin']))
-    {
-       $query = "select email,password from admin where email = '$_POST[email]' 
-       AND password = '$_POST[password]'";
-       $query_run = mysqli_query($conn,$query);
-       if(mysqli_num_rows($query_run))
-       {
-        echo "<script type='text/javascript'>
-        window.location.href = 'employee_dashboard.php';
-        </script>
-        ";
-       }
-       else
-       {
-        echo "<script type='text/javascript'>
-        alert('Please enter correct details');
-        window.location.href = 'employee_login.php';
-        </script>
-        ";
-       }
-    }
+<?php 
+session_start();
+ include('connection.php');
+
+ $msg="";
+  
+if (isset($_POST['adminlogin'])) {
+  $email = mysqli_real_escape_string($conn,$_POST['email']);
+  $password = mysqli_real_escape_string($conn,$_POST['password']);
+  $sql = mysqli_query($conn,"select * from admin where email='$email' && password='$password'");
+  $num=mysqli_num_rows($sql);
+  if ($num>0) {
+    $row=mysqli_fetch_assoc($sql);
+    $_SESSION['EMPLOYEE_ID']=$row['id'];
+    $_SESSION['EMPLOYEE_EMAIL']=$row['email'];
+    header("location:employee_dashboard.php");
+  }
+  else{
+    $msg="Please Enter Valid Details !";
+    echo"<script>
+    alert('$msg');
+    </script>";
+
+  }
+}
+
 ?>
+
 
 
 
