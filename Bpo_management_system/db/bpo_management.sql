@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 04, 2024 at 12:11 PM
+-- Generation Time: Apr 05, 2024 at 10:31 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -32,15 +32,16 @@ CREATE TABLE `admin` (
   `name` varchar(20) NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(20) NOT NULL,
-  `mobile` int(12) NOT NULL
+  `mobile` int(12) NOT NULL,
+  `position` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`id`, `name`, `email`, `password`, `mobile`) VALUES
-(1, 'Admin', 'bpoadmin@123', 'admin123', 2147483647);
+INSERT INTO `admin` (`id`, `name`, `email`, `password`, `mobile`, `position`) VALUES
+(1, 'Admin', 'bpoadmin@123', 'admin123', 2147483647, 'employee');
 
 -- --------------------------------------------------------
 
@@ -67,8 +68,7 @@ CREATE TABLE `dashboard` (
 --
 
 INSERT INTO `dashboard` (`id`, `title`, `description`, `startdate`, `enddate`, `status`, `filename`, `folderpath`, `final_filename`, `final_folderpath`, `user_id`) VALUES
-(27, 'ssss', 'ss', '2024-04-03', '2024-04-25', 'Completed', 'TASK MANAGEMENT SYSTEM DOCUMENTETION.docx', 'uploads/', '', '', 5),
-(35, 'www', 'ww', '2024-04-04', '2024-04-25', 'Completed', '', '', '', '', 5);
+(27, 'ssss', 'ss', '2024-04-03', '2024-04-25', 'Completed', 'TASK MANAGEMENT SYSTEM DOCUMENTETION.docx', 'uploads/', 'payment for nptle.pdf', 'uploads/', 5);
 
 -- --------------------------------------------------------
 
@@ -100,8 +100,7 @@ CREATE TABLE `payment` (
 --
 
 INSERT INTO `payment` (`id`, `user_id`, `task_id`, `name`, `email`, `address`, `city`, `state`, `zipcode`, `name_on_card`, `card_no`, `exp_month`, `exp_year`, `cvv`, `req_amt`, `amt_pay`) VALUES
-(2, 5, 27, '', '', '', '', '', 0, '', 0, 0, 0, 0, 1000, 0),
-(3, 5, 35, '', '', '', '', '', 0, '', 0, 0, 0, 0, 500, 0);
+(2, 5, 27, 'Abishek s', 'projectmanagerBharath.S@gmail.com', 'no.78 masilamani street ,kosapet', 'vellore', 'Tamil Nadu', 632001, '666', 123, 32, 2323, 3232, 1001, 1001);
 
 -- --------------------------------------------------------
 
@@ -170,13 +169,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `dashboard`
 --
 ALTER TABLE `dashboard`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `users`
