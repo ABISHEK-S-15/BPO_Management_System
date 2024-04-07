@@ -16,8 +16,8 @@ session_start();
             $folder_path = $targetDir;
     
             // Prevent SQL Injection using prepared statements
-            $stmt = $conn->prepare("UPDATE dashboard SET final_filename=?, final_folderpath=? WHERE id=? ");
-            $stmt->bind_param("ssi", $final_filename, $folder_path, $task_id);
+            $stmt = $conn->prepare("UPDATE dashboard SET final_filename=?, final_folderpath=? WHERE id=? AND user_id=?");
+            $stmt->bind_param("ssii", $final_filename, $folder_path, $task_id,$user_id);
             $stmt->execute();
             $stmt->close();
     
