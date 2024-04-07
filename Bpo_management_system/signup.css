@@ -140,3 +140,50 @@ body{
 .content{
     display: flex;
 }
+
+
+.alert {
+    width: 30%;
+    display: none;
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(226, 124, 56);
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    z-index: 1000;
+    
+}
+
+.show {
+    display: block;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.close-button {
+    background-color: #ee1707;
+    border: none;
+    color: white;
+    padding: 10px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.close-button:hover {
+    background-color: #915c17;
+}

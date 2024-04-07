@@ -1,5 +1,4 @@
-
-*{
+* {
     margin: 0;
     padding: 0;
 }
@@ -7,54 +6,55 @@
 
 
 
-.main{
+.main {
     width: 100%;
-    background: linear-gradient(to top, rgba(0,0,0,0.5)50%,rgba(0,0,0,0.5)50%), url(images/2.jpg); 
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.5)50%, rgba(0, 0, 0, 0.5)50%), url(images/2.jpg);
     background-position: center;
     background-size: cover;
     height: 100vh;
 }
 
-.navbar{
+.navbar {
     width: 1200px;
     height: 75px;
     margin: auto;
 }
 
-.icon{
+.icon {
     width: 200px;
     float: left;
     height: 70px;
 }
-.logo-img{
+
+.logo-img {
     height: 100px;
     width: 100px;
     margin-left: 40px;
 }
 
 
-.menu{
+.menu {
     width: 400px;
     float: left;
     height: 70px;
     padding-top: 20px;
 }
 
-ul{
+ul {
     float: left;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-ul li{
+ul li {
     list-style: none;
     margin-left: 62px;
     margin-top: 27px;
     font-size: 14px;
 }
 
-ul li a{
+ul li a {
     text-decoration: none;
     color: #fff;
     font-family: Arial;
@@ -62,18 +62,18 @@ ul li a{
     transition: 0.4s ease-in-out;
 }
 
-ul li a:hover{
+ul li a:hover {
     color: #ff7200;
 }
 
-.search{
+.search {
     width: 330px;
     float: left;
     margin-left: 270px;
     padding-top: 20px;
 }
 
-.srch{
+.srch {
     font-family: 'Times New Roman';
     width: 200px;
     height: 40px;
@@ -89,7 +89,7 @@ ul li a:hover{
     border-top-left-radius: 5px;
 }
 
-.btn{
+.btn {
     width: 100px;
     height: 40px;
     background: #ff7200;
@@ -102,19 +102,20 @@ ul li a:hover{
     transition: 0.2s ease;
     cursor: pointer;
 }
-.btn:hover{
+
+.btn:hover {
     color: #000;
 }
 
-.btn:focus{
+.btn:focus {
     outline: none;
 }
 
-.srch:focus{
+.srch:focus {
     outline: none;
 }
 
-.about{
+.about {
 
     max-width: 800px;
     height: 500px;
@@ -126,25 +127,26 @@ ul li a:hover{
     border-color: #534b4b;
     border-style: solid;
     border-width: 1px;
-    backdrop-filter: blur(8px);  
-     
-}
-.about .about-title{
-    text-align: center;
-    font-family:sans-serif;
-    text-shadow: #000;
-     
+    backdrop-filter: blur(8px);
+
 }
 
-.about .about-title .head{
+.about .about-title {
+    text-align: center;
+    font-family: sans-serif;
+    text-shadow: #000;
+
+}
+
+.about .about-title .head {
     color: #ff7200;
     text-shadow: #000;
 }
 
-.about .about-content{
+.about .about-content {
     text-align: left;
     font-size: 18px;
-    font-family:'Times New Roman';
+    font-family: 'Times New Roman';
     font-weight: normal;
     color: #fff;
     padding-left: 10px;

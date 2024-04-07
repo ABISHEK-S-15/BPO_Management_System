@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<link rel="shortcut icon" href="images/logo2.png" type="x-icon" >
+    <link rel="shortcut icon" href="images/logo2.png" type="x-icon">
     <title>ABOUT</title>
     <link rel="stylesheet" href="about.css">
 </head>
+
 <body>
     <div class="main">
         <div class="navbar">
             <div class="icon">
-                <h2 class="logo"><img class="logo-img" src="images/logo2.png"/></h2>
+                <h2 class="logo"><img class="logo-img" src="images/logo2.png" /></h2>
             </div>
 
             <div class="menu">
@@ -27,7 +29,7 @@
                 <a href="#"> <button class="btn">Search</button></a>
             </div>
 
-        </div> 
+        </div>
         <div class="about">
             <h1 class="about-title"> <br><span class="head">GLOBAL INFOTECH</span> </h1>
             <br><br>
@@ -45,6 +47,7 @@
             </div>
         </div>
     </div>
-    
+
 </body>
+
 </html>

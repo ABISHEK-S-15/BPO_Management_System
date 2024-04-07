@@ -3,7 +3,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+
 }
 .main_box{
   position: relative;
@@ -302,6 +302,7 @@ box-shadow: 0 1px 10px rgb(144, 138, 138);
   color: #ff7200;
 }
 .column-head{
+  
   background-color: #fff;
 	border-radius: 10px;
   height: 70px;
@@ -390,6 +391,9 @@ table{
 .table-values{
   text-align:center;
   color:#3f4046;
+}
+.table-head{
+  text-align: center;
 }
 
 .delete-img{
