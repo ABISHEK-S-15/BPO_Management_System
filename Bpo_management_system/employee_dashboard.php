@@ -42,14 +42,14 @@
 
       </label>
     </div>
-    <div class="sidebar_menu" style=" background-color: #2927a8;">
+    <div class="sidebar_menu" >
       <div class="logo">
         <a href="#"><img src="images/download (2).png" alt="profile_picture"></a>
       </div>
       <div class="btn_two">
         <label for="check">
           <i>
-            <p style="font-size: 35px;"> &times;</p>
+            <p class="x-sym"> &times;</p>  
           </i>
 
         </label>
@@ -158,7 +158,7 @@
                       <div class="modal-content">
                         <form method="POST" action="status_edit.php">
                           <div class="modal-header">
-                            <h3 class="modal-title">STATUS</h3>
+                            <h3 class="model-title">STATUS</h3>
                           </div>
                           <div class="modal-body">
                             <div class="col-md-2"></div>
@@ -166,15 +166,15 @@
                               <div>
                                 <label></label>
                                 <input type="hidden" value="<?php echo $row['id'] ?>" name="id" />
-                                <select name="status" required>
-                                  <option>Not Started</option>
+                                <select class="select-css" name="status" required>
+                                  <option>Pending</option>
                                   <option>In-Progress</option>
                                   <option>Completed</option>
                                 </select>
                               </div>
                             </div>
                           </div>
-                          <br style="clear:both;" />
+                          <br style="clear:both;" /><br>
                           <div class="modal-footer">
                             <button class="btn btn-danger" data-dismiss="modal"> Close</button>
                             <button class="btn btn-warning" name="edit"> Update</button>
@@ -193,7 +193,7 @@
                       <div class="modal-content">
                         <form method="POST" action="amount_edit.php">
                           <div class="modal-header">
-                            <h3 class="modal-title">AMOUNT</h3>
+                            <h3 class="model-title">AMOUNT</h3>
                           </div>
                           <div class="modal-body">
                             <div class="col-md-2"></div>
@@ -202,13 +202,12 @@
                                 <label></label>
                                 <input type="hidden" value="<?php echo $row['id'] ?>" name="id" />
                                 <div>
-                                  <label>Amount</label>
-                                  <input type="number" name="amount">
+                                  <input type="number" name="amount" placeholder="Enter Amount">
                                 </div>
                               </div>
                             </div>
                           </div>
-                          <br style="clear:both;" />
+                          <br style="clear:both;" /><br>
                           <div class="modal-footer">
                             <button class="btn btn-danger" data-dismiss="modal"> Close</button>
                             <button class="btn btn-warning" name="edit"> Update</button>
@@ -225,7 +224,7 @@
                       <div class="modal-content">
                         <form method="POST" enctype="multipart/form-data" action="upload_edit.php">
                           <div class="modal-header">
-                            <h3 class="modal-title">FILE UPLOAD</h3>
+                            <h3 class="model-title">FILE UPLOAD</h3>
                           </div>
                           <div class="modal-body">
                             <div class="col-md-2"></div>
@@ -234,7 +233,6 @@
                                 <label></label>
                                 <input type="hidden" value="<?php echo $row['id'] ?>" name="id" />
                                 <div>
-                                  <label class="file-text">File Upload:</label>
                                   <input type="file" id="pdfFile" name="pdfFile" required>
                                 </div>
                               </div>

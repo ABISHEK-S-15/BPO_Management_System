@@ -36,7 +36,7 @@ if (isset($_POST['Submit'])) {
     $folder_path = $targetDir;
   }
   mysqli_query($conn, "insert into dashboard(title,description,startdate,enddate,status,filename,folderpath,user_id)
-    value ('$title','$description',Now(),'$enddate','Not started','$filename','$folder_path','$id')");
+    value ('$title','$description',Now(),'$enddate','Pending','$filename','$folder_path','$id')");
 
   header("location:client_dashboard.php");
 }
@@ -118,7 +118,7 @@ if (isset($_POST['Submit'])) {
       <div class="btn_two">
         <label for="check">
           <i>
-            <p style="font-size: 35px;"> &times;</p>
+            <p class="x-sym"> &times;</p>
           </i>
         </label>
       </div>

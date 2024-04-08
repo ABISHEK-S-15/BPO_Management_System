@@ -1,13 +1,6 @@
 <?php
-session_start();
 include('connection.php');
 
-if (!isset($_SESSION['USER_ID'])) {
-    header("location:index.php");
-    exit(); // Terminate script execution after redirection
-}
-
-$user_id = $_SESSION['USER_ID'];
 
 
 // Check if the 'source' parameter is set and valid
@@ -18,9 +11,19 @@ if (isset($_GET['source']) && ($_GET['source'] === 'employee' || $_GET['source']
     if (isset($_GET['id'])) {
         $task_id = $_GET['id'];
 
+        $query2 = "select * from dashboard where id = '$task_id'";
+        $queryrun2 = mysqli_query($conn,$query2);
+        $row2 = mysqli_fetch_array($queryrun2);
+
+        if($row2){
+            $user_id = $row2['user_id'];
+        }
+
 
 
         if ($_GET['source'] === 'employee') {
+
+            $source = $_GET['source'];
 
             $query = "select * from dashboard where id = '$task_id' && user_id = '$user_id' ";
             $queryrun = mysqli_query($conn, $query);
@@ -29,9 +32,11 @@ if (isset($_GET['source']) && ($_GET['source'] === 'employee' || $_GET['source']
             if ($row) {
                 $filename = $row['filename'];
                 $folderpath = $row['folderpath'];
-                download_file('employee_dashboard.php', $filename, $folderpath);
+                download_file('employee_dashboard.php', $filename, $source);
             }
         } elseif ($_GET['source'] === 'client') {
+
+            $source = $_GET['source'];
 
             $query1 = "select * from dashboard where id = '$task_id' && user_id = '$user_id' ";
             $queryrun1 = mysqli_query($conn, $query1);
@@ -40,7 +45,7 @@ if (isset($_GET['source']) && ($_GET['source'] === 'employee' || $_GET['source']
             if ($row1) {
                 $filename = $row1['final_filename'];
                 $folderpath = $row1['final_folderpath'];
-                download_file('client_dashboard.php', $filename, $folderpath);
+                download_file('client_dashboard.php', $filename, $source);
             }
         }
     } else {
@@ -76,7 +81,7 @@ if (isset($_GET['source']) && ($_GET['source'] === 'employee' || $_GET['source']
 
 <body>
     <?php
-    function download_file($redirect_Page, $filename, $folderpath)
+    function download_file($redirect_Page, $filename, $source)
     {
 
     ?>
@@ -92,10 +97,17 @@ if (isset($_GET['source']) && ($_GET['source'] === 'employee' || $_GET['source']
                 <table>
                     <thead>
                         <tr class="column-head">
+
                             <th>S.No</th>
                             <th>File Name</th>
                             <th>File</th>
-                            <th>Innovoice</th>
+                            <?php 
+                             if ($source !== 'employee'){  ?> 
+                             <th>Innovoice</th> 
+
+                             <?php } ?>
+
+                            
                         </tr>
                     </thead>
                     <tbody>
@@ -105,6 +117,9 @@ if (isset($_GET['source']) && ($_GET['source'] === 'employee' || $_GET['source']
                         echo "<td>" . $count . "</td>";
                         echo "<td>" . $filename . "</td>";
                         echo '<td><a href="uploads/' . $filename . '" download><button class="download-btn">Download</button></a></td>';
+
+                        if ($source !=='employee'){   echo '<td><a href="inovoice-1.php?id='.$_GET['id'].'" ><button class="download-btn">Inovoice</button></a></td>';  }
+                           
                         echo "</tr>";
                         $count++;
                         ?>
@@ -116,7 +131,7 @@ if (isset($_GET['source']) && ($_GET['source'] === 'employee' || $_GET['source']
         </div>
 
 
-    <?Php  }   ?>
+    <?php  }   ?>
 
 
 </body>

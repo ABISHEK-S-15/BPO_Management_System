@@ -114,14 +114,17 @@ form a{
 
 
 .alert {
+    text-align: center;
     width: 30%;
     display: none;
     position: fixed;
     top: 10%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: rgb(226, 124, 56);
-    color: white;
+    background-color: #fff;
+    color: #000;
+    font-weight: bold;
+    font-size: larger;
     padding: 15px;
     border-radius: 5px;
     z-index: 1000;
@@ -136,7 +139,7 @@ form a{
     position: absolute;
     top: 10px;
     right: 10px;
-    color: white;
+    color: rgb(10, 10, 10);
     font-size: 20px;
     cursor: pointer;
 }
@@ -145,11 +148,12 @@ form a{
     background-color: #ee1707;
     border: none;
     color: white;
-    padding: 10px 24px;
+    height: 25px;
+    width: 40px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 10px;
     margin-top: 10px;
     cursor: pointer;
     border-radius: 5px;

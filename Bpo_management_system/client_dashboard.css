@@ -20,7 +20,7 @@
   height: 100vh;
   width: 250px;
   left: -250px;
-  background-color: #f3852a;
+  background-image: linear-gradient(to top, #bb4232,#d9761a, #eb7413,#ff7200);
   box-shadow: 0px 0px 6px rgba(255, 255, 255, 0.5);
   overflow: hidden;
   transition: all 0.3s linear;
@@ -43,7 +43,7 @@
 }
 
 .client-details h3 {
-  color: #ffffff;
+  color: #31312c;
   text-align: center;
   font-weight: bolder;
   font-size: 25px;
@@ -433,4 +433,11 @@ table {
 .delete-img:hover {
   width: 26px;
   opacity: 1;
+}
+
+.x-sym{
+  font-size: 35px;
+}
+.x-sym:hover{
+  font-size: 30px;
 }

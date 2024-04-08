@@ -48,7 +48,7 @@ if (isset($_POST['adminlogin'])) {
 
   <div id="alertMessage" class="alert">
     <span class="close" onclick="closeAlert()">&times;</span>
-    <p><?php echo $msg; ?></p>
+    <p><?php echo $msg; ?></p><br>
     <button class="close-button" onclick="closeAlert()">OK</button>
   </div>
 
