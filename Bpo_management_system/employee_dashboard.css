@@ -20,7 +20,7 @@
   height: 100vh;
   width: 250px;
   left: -250px;
-  background-image: linear-gradient(to top, rgb(114, 114, 238), rgb(55, 55, 212), rgb(23, 23, 233), blue);
+  background-image: linear-gradient(to top, #e7b0a9,#e1bf9f, #dcb08c,#dc965d);
   box-shadow: 0px 0px 6px rgba(255, 255, 255, 0.5);
   overflow: hidden;
   transition: all 0.3s linear;
@@ -241,7 +241,11 @@ input[type="submit"]:hover {
   width: 80px;
 
 }
-
+.completed-container{
+  position: absolute;
+  
+  right: 180px;
+} 
 .bpo-logo {
   margin-left: 20px;
   padding-bottom: 10px;
@@ -257,7 +261,7 @@ input[type="submit"]:hover {
 }
 
 .logout-container {
-  position: fixed;
+  margin-left: 1250px;
   right: 10px;
 }
 
@@ -475,4 +479,136 @@ table {
 }
 .x-sym:hover{
   font-size: 30px;
+}
+
+
+
+/* it is for live dash board on my dashboard for both client and employee */
+
+
+
+
+
+
+.live-dashboard{
+  background-color: #fde7dd;
+  border-radius: 10px;
+  height: 300px;
+  width: 1495px;
+  padding: 20px;
+  box-shadow: 0 1px 10px rgb(144, 138, 138);
+  padding-left: 70px;
+  padding-top: 25px;
+}
+.total-no-task{
+  background-color: #e3f0d2;
+  border-radius: 10px;
+  width: 300px;
+  height: 250px;
+  padding-top: 19px;
+  box-shadow: 0 1px 10px rgb(144, 138, 138);
+  float:left;
+  margin-right: 50px;
+  font-weight: 500;
+}
+
+/* #total-no-task1{
+  
+  left: 80px;
+}
+
+#total-no-task2{
+  position: fixed;
+  left: 440px;
+}
+
+#total-no-task3{
+  position: fixed;
+  left: 800px;
+}
+
+#total-no-task4{
+  position: fixed;
+  right: 25px;
+  
+} */
+
+.total-task-head{
+  text-align: center;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  padding-bottom: 1px;
+}
+
+#img1{
+  width: 150px;
+}
+
+#img2{
+  width: 150px;
+  padding-left: 20px;
+  padding-top: 15px;
+}
+
+#img3{
+  width: 150px;
+  padding-left: 15px;
+  padding-top: 16px;
+}
+
+.percentage-container{
+  background-color: #d9f9f6;
+  border-radius: 80px;
+  width: 165px;
+  height: 163px;
+  box-shadow: 0 1px 10px rgb(224, 201, 122);
+  margin-left: 65px;
+
+  /* this is for the backgrount on percentage */
+  
+  background-color: #f0f0f0; 
+  background-image: url('images/percentage.webp');
+  background-repeat: no-repeat; 
+  background-size: 215px; 
+  background-position: -26px -32px;
+
+  text-align: center;
+  font-family: Helvetica;
+  font-size: 10px;
+  font-weight: 450;
+  padding-top: 43px;
+  padding-left: 10px;
+  
+}
+
+.num-container{
+  background-color: #d9f9f6;
+  border-radius: 500px;
+  width:115px;
+  height: 115px;
+  box-shadow: 0 1px 10px rgb(178, 176, 172);
+  margin-right: 25px;
+  margin-top: 20px;
+  border: 1px solid rgb(124, 115, 115);
+  padding-top: 15px;
+  padding-right: 8px;
+  /* this lines is for the content inside the container */
+  text-align: center;
+  font-family: "Helvetica";
+  font-size: 60px;
+  font-weight:400;
+
+}
+
+.inner-content{
+  display: flex;
+  justify-content: space-between; 
+  
+}
+
+.task-num{
+  font-size: 38px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight:bold;
 }

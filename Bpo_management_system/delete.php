@@ -1,11 +1,14 @@
 <?php
 
-session_start();
 
 include('connection.php');
 
-$user_id = $_SESSION['USER_ID'];
+
 $task_id = $_GET['id'];
+
+$query_user = mysqli_query($conn,"select * from dashboard where id = '$task_id'");
+$query_row = mysqli_fetch_assoc($query_user);
+$user_id = $query_row['user_id'];
 
 if(isset($_GET['source'])) {
     $source = $_GET['source'];

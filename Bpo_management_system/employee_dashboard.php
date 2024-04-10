@@ -26,8 +26,11 @@
       <div class="head-container">
         <h1 class="heading">GLOBAL INFOTECH</h1>
       </div>
+      <div class="completed-container">
+          <a href="completed_task.php?source=employee"><button class="logout">Completed Task</button></a>
+        </div>
       <div class="logout-container">
-        <a href="logout.php"><button class="logout">Logout</button></a>
+        <a href="logout.php?source=employee"><button class="logout">Logout</button></a>
       </div>
     </div>
 
@@ -70,12 +73,43 @@
       $query = mysqli_query($conn, "select * from admin where email = '$user'");
       $row = mysqli_fetch_array($query);
       $id = $row['id'];
-      $name = $row['name'];
+      $name = $row['username'];
       $mobile = $row['mobile'];
       //  $company = $row['company'];
       $position = $row['position'];
       //  $address = $row['address'];
       $email = $row['email'];
+
+
+
+
+                
+          // the below is for the live dashboard to show the number of tasks
+
+          $user_id = $id;
+          // this is to count the the completed task
+          $complete_query = "select * from dashboard where status = 'Completed' ";
+          $complete_con = mysqli_query($conn,$complete_query);
+          $completed_count = mysqli_num_rows($complete_con);
+          // this is to count the ongoing task
+          $ongoing_query = "select * from dashboard where status != 'Completed' ";
+          $ongoing_con = mysqli_query($conn,$ongoing_query);
+          $ongoing_count = mysqli_num_rows($ongoing_con);
+
+          // this is to count the total number of taskassigned by user
+          $total_query = "select * from dashboard where id ";
+          $total_con = mysqli_query($conn,$total_query);
+          $total_count = mysqli_num_rows($total_con);
+
+          // this is to calculate the percentage of completed task on total task
+
+          if ($total_count > 0) {
+            $percentage_completed = round(($completed_count / $total_count) * 100);
+          } else {
+            $percentage_completed = 0; // Handle division by zero error
+          }
+
+
 
 
       ?>
@@ -106,6 +140,52 @@
 
 
     <div class="task-body" style="margin-left: 20px;margin-right:10px;">
+
+            <!-- this section is for the live dash board in the client dashboard -->
+
+          <div class="live-dashboard">
+
+            <div class="total-no-task" id="total-no-task1">
+              <h4 class="total-task-head">Total Tasks</h4>
+                  <div class="inner-content">
+                    <img src="images/total.png" alt="" class="total-img" id="img1">
+                      <div class="num-container">
+                          <h7 class="Totaltask-number"><?php echo $total_count ?></h7>
+                      </div>
+                  </div>
+            </div>
+
+            <div class="total-no-task" id="total-no-task2">
+              <h4 class="total-task-head">Ongoing Tasks</h4>
+                <div class="inner-content">
+                  <img src="images/ongoing1.png" alt="" class="total-img" id="img2">
+                    <div class="num-container">
+                        <h7 class="Totaltask-number"><?php echo $ongoing_count ?></h7>
+                      </div>
+                </div>
+            </div>
+
+            <div class="total-no-task" id="total-no-task3">
+              <h4 class="total-task-head">Completed Tasks</h4>
+                <div class="inner-content">
+                  <img src="images/completed.png" alt="" class="total-img" id="img3">
+                  <div class="num-container">
+                      <h7 class="Totaltask-number"><?php echo $completed_count ?></h7>
+                  </div>
+                </div>
+            </div>
+
+            <div class="total-no-task" id="total-no-task4">
+             <h4 class="total-task-head">Task Percentage</h4>
+              <div class="percentage-container">
+                <h3 class="task-num"><?php echo $percentage_completed,"%" ?></h3>
+              </div>
+
+            </div>
+
+          </div><br>
+
+
       <h1>Task List</h1>
       <div class="task-container">
         <table>
@@ -120,6 +200,7 @@
               <th class="table-head">Download</th>
               <th class="table-head">Action</th>
               <th class="table-head">Upload</th>
+              <th></th>
             </tr>
           </thead>
           <tbody class="column-value">
@@ -129,7 +210,7 @@
 
             $db = mysqli_select_db($connection, "bpo_management");
 
-            $sql = "select * from dashboard";
+            $sql = "select * from dashboard where status != 'Completed'";
             $run = mysqli_query($connection, $sql);
             $count = 1;
 

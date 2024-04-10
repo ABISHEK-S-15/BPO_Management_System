@@ -44,6 +44,34 @@ if (isset($_POST['Submit'])) {
 
 
 
+// the below is for the live dashboard to show the number of tasks
+
+$user_id = $id;
+// this is to count the the completed task
+$complete_query = "select * from dashboard where user_id='$user_id' && status = 'Completed' ";
+$complete_con = mysqli_query($conn,$complete_query);
+$completed_count = mysqli_num_rows($complete_con);
+// this is to count the ongoing task
+$ongoing_query = "select * from dashboard where user_id='$user_id' && status != 'Completed' ";
+$ongoing_con = mysqli_query($conn,$ongoing_query);
+$ongoing_count = mysqli_num_rows($ongoing_con);
+
+// this is to count the total number of taskassigned by user
+$total_query = "select * from dashboard where user_id='$user_id' ";
+$total_con = mysqli_query($conn,$total_query);
+$total_count = mysqli_num_rows($total_con);
+
+// this is to calculate the percentage of completed task on total task
+
+if ($total_count > 0) {
+  $percentage_completed = round(($completed_count / $total_count) * 100);
+} else {
+  $percentage_completed = 0; // Handle division by zero error
+}
+
+
+
+
 
 
 ?>
@@ -97,8 +125,13 @@ if (isset($_POST['Submit'])) {
       <div class="head-container">
         <h1 class="heading">GLOBAL INFOTECH</h1>
       </div>
+
+      <div class="completed-container">
+          <a href="completed_task.php?source=client"><button class="logout">Completed Task</button></a>
+        </div>
+
       <div class="logout-container">
-        <a href="logout.php"><button class="logout">Logout</button></a>
+        <a href="logout.php?source=client"><button class="logout">Logout</button></a>
       </div>
     </div>
 
@@ -148,9 +181,58 @@ if (isset($_POST['Submit'])) {
     </div>
 
 
-
+   
 
     <div class="task-body">
+
+    
+
+     <!-- this section is for the live dash board in the client dashboard -->
+
+        <div class="live-dashboard">
+
+            <div class="total-no-task" id="total-no-task1">
+              <h4 class="total-task-head">Total Tasks</h4>
+                  <div class="inner-content">
+                    <img src="images/total.png" alt="" class="total-img" id="img1">
+                      <div class="num-container">
+                          <h7 class="Totaltask-number"><?php echo $total_count ?></h7>
+                      </div>
+                  </div>
+            </div>
+
+            <div class="total-no-task" id="total-no-task2">
+            <h4 class="total-task-head">Ongoing Tasks</h4>
+                <div class="inner-content">
+                  <img src="images/ongoing1.png" alt="" class="total-img" id="img2">
+                    <div class="num-container">
+                        <h7 class="Totaltask-number"><?php echo $ongoing_count ?></h7>
+                      </div>
+                </div>
+            </div>
+
+            <div class="total-no-task" id="total-no-task3">
+            <h4 class="total-task-head">Completed Tasks</h4>
+                <div class="inner-content">
+                  <img src="images/completed.png" alt="" class="total-img" id="img3">
+                  <div class="num-container">
+                      <h7 class="Totaltask-number"><?php echo $completed_count ?></h7>
+                  </div>
+                </div>
+            </div>
+
+            <div class="total-no-task" id="total-no-task4">
+            <h4 class="total-task-head">Task Percentage</h4>
+              <div class="percentage-container">
+                <h3><?php echo $percentage_completed,"%" ?></h3>
+              </div>
+            
+            </div>
+
+        </div><br>
+        
+
+
       <h1>Task List</h1>
       <div class="task-container">
         <table>
@@ -162,7 +244,8 @@ if (isset($_POST['Submit'])) {
               <th>Start Date</th>
               <th>End Date</th>
               <th>Status</th>
-              <th>Payment</th>
+              <!-- <?php // if($status === 'Completed'){?><th>Payment</th> <?php //} ?> -->
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -182,7 +265,7 @@ if (isset($_POST['Submit'])) {
             $id = $rowr['id'];
 
 
-            $query1 = mysqli_query($conn, "select * from dashboard where user_id = '$id'");
+            $query1 = mysqli_query($conn, "select * from dashboard where user_id = '$id' && status != 'Completed'");
             $result = mysqli_num_rows($query1);
 
             ?>
@@ -199,9 +282,9 @@ if (isset($_POST['Submit'])) {
                 <td class="descrption-value"><?php echo $row['description']; ?></td>
                 <td class="table-values"><?php echo $row['startdate']; ?></td>
                 <td class="table-values"><?php echo $row['enddate']; ?></td>
-                <td class="table-values"><?php echo $row['status']; ?></td>
+                <td class="table-values"><?php echo $row['status']; ?></td> 
 
-                <td class="pay-btn-con"><a href="payment.php?id=<?php echo $row['id']; ?>"><button class="pay-btn">Pay</button></a></td>
+                <!-- <?php //if($status === 'Completed'){?><td class="pay-btn-con"><a href="payment.php?id=<?php //echo $row['id']; ?>"><button class="pay-btn">Pay</button></a></td> <?php //} ?> -->
                 <td class="pay-btn-con"><a href="delete.php?source=client&id=<?php echo $row['id']; ?>"><img src="images/delete-img.png" class="delete-img"></a></td>
               </tr>
             <?php $count++;
@@ -211,14 +294,11 @@ if (isset($_POST['Submit'])) {
         </table>
       </div>
     </div>
-
-
-
+  
 
 
     <div class="task-btn">
       <button class="assign-btn" onclick="openpopup()">Assign Task</button>
-
     </div>
 
 
@@ -253,6 +333,9 @@ if (isset($_POST['Submit'])) {
 
       </form>
     </div>
+
+    
+
   </div>
 
 
