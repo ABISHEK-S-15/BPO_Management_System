@@ -2,10 +2,10 @@
 session_start();
 include('connection.php');
 
-if (!isset($_SESSION['USER_ID'])) {
-  header("location:index.php");
-  die();
-}
+// if (!isset($_SESSION['USER_ID']) ||  !isset($_SESSION['EMPLOYEE_ID'])) {
+//   header("location:index.php");
+//   die();
+// }
 ?>
 
 <?php

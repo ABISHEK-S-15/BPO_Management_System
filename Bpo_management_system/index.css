@@ -64,6 +64,14 @@ ul li a:hover{
     color: #ff7200;
 }
 
+ul li a:active{
+    color: #ff7200;
+}
+
+ul li a.active{
+    color: #ff7200;
+}
+
 .search{
     width: 330px;
     float: left;

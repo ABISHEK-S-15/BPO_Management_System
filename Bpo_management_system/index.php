@@ -7,6 +7,7 @@ $msg = "";
 if (isset($_POST['userlogin'])) {
   $email = mysqli_real_escape_string($conn, $_POST['email']);
   $password = mysqli_real_escape_string($conn, $_POST['password']);
+
   $sql = mysqli_query($conn, "select * from users where email='$email' && password='$password'");
   $num = mysqli_num_rows($sql);
   if ($num > 0) {
@@ -201,6 +202,8 @@ if (isset($_POST['userlogin'])) {
     <ion-icon name="logo-skype"></ion-icon><span class="end-content">Skype:Global_info_TecH12</span><br> <br>
   </div>
   <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
-</body>
+
+  
+  </body>
 
 </html>

@@ -501,9 +501,9 @@ table {
 
 
 
-/* it is for live dash board on my dashboard for both client and employee */
+/* it is for live dash board on my dashboard for both client and employee  1495px margin-right: 50px;  padding: 20px; */
 
-
+/* /wertyuiopasdfghjklxcvbnm,jkdjdjkd kfkfk  kfkfk  fjkfjkfk   fkfkfk */
 
 
 
@@ -512,8 +512,8 @@ table {
   background-color: #fde7dd;
   border-radius: 10px;
   height: 300px;
-  width: 1495px;
-  padding: 20px;
+  width: 100%;
+  
   box-shadow: 0 1px 10px rgb(144, 138, 138);
   padding-left: 70px;
   padding-top: 25px;
@@ -521,12 +521,12 @@ table {
 .total-no-task{
   background-color: #e3f0d2;
   border-radius: 10px;
-  width: 300px;
+  width: 21%;   /* width: 300px; */
   height: 250px;
   padding-top: 30px;
   box-shadow: 0 1px 10px rgb(144, 138, 138);
   float:left;
-  margin-right: 50px;
+  margin-right: 3.8%;
   font-weight: 450;
 }
 
@@ -559,17 +559,17 @@ table {
 }
 
 #img1{
-  width: 150px;
+  width: 50%;     /* width: 150px; */
 }
 
 #img2{
-  width: 150px;
+  width: 50%;     /* width: 150px; */
   padding-left: 20px;
   padding-top: 15px;
 }
 
 #img3{
-  width: 150px;
+  width: 50%;     /* width: 150px; */
   padding-left: 15px;
   padding-top: 16px;
 }
@@ -582,7 +582,7 @@ table {
   box-shadow: 0 1px 10px rgb(224, 201, 122);
   margin-left: 65px;
 
-/* this is for the backgrount on percentage */
+/* this is for the background on percentage */
   
   background-color: #f0f0f0; 
   background-image: url('images/percentage.webp');
@@ -601,8 +601,8 @@ table {
 .num-container{
   background-color: #d9f9f6;
   border-radius: 500px;
-  width:115px;
-  height: 115px;
+  width: 38%;       /* width:115px; */
+  height: 115px;  
   box-shadow: 0 1px 10px rgb(178, 176, 172);
   margin-right: 25px;
   margin-top: 20px;
