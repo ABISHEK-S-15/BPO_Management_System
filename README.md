@@ -21,7 +21,7 @@ Clone the Repository:
 
 sh
 Copy code
-git clone https://github.com/your-username/BPO_Management_System.git
+git clone https://github.com/ABISHEK-S-15/BPO_Management_System.git
 Navigate to the Project Directory:
 
 sh
