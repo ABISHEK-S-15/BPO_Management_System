@@ -7,6 +7,9 @@ Client Interface: Clients can upload documents, assign data entry tasks, and dow
 Employee Interface: Employees can view assigned tasks, download documents for data entry, and upload completed work. The interface is designed to streamline task management and reporting.
 Document Exchange: Both clients and employees can exchange documents through the platform, ensuring a smooth workflow.
 Interactive Tools: The website includes essential tools for managing tasks, processing payments, and generating invoices.
+
+Here is the Hosted Website Link: https://abishek15.infinityfreeapp.com/index.php
+
 Technologies Used
 XAMPP: Provides the server environment for running PHP and MySQL.
 MySQL: Used for managing and querying the database.
